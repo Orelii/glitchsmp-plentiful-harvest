@@ -76,6 +76,24 @@ public class GiveCropCommand implements CommandExecutor {
                 lore.add(ChatColor.GRAY + "A whole lot better than the other kind.");
                 superCrop = Manager.getManager().makeSuperCrop(ChatColor.YELLOW + "Whole Wheat", Material.WHEAT, lore, 1, amount);
             }
+
+            case "pumpkin" -> {
+                List<String> lore = new ArrayList<>();
+                lore.add(ChatColor.GRAY + "Possessed by a vengeful spirit who couldn't find anything scarier to haunt.");
+                superCrop = Manager.getManager().makeSuperCrop(ChatColor.GOLD + "Haunted Pumpkin", Material.JACK_O_LANTERN, lore, 1, amount);
+            }
+
+            case "melon" -> {
+                List<String> lore = new ArrayList<>();
+                lore.add(ChatColor.GRAY + "This rare fruit sparkles in a way that looks like little fairies.");
+                superCrop = Manager.getManager().makeSuperCrop(ChatColor.GREEN + "Fairy Melon", Material.GLISTERING_MELON_SLICE, lore, 1, amount);
+            }
+
+            case "cocoa" -> {
+                List<String> lore = new ArrayList<>();
+                lore.add(ChatColor.GRAY + "A flavour so delicious it'll kick your mouth in the ass.");
+                superCrop = Manager.getManager().makeSuperCrop(ChatColor.RED + "Sweet Cocoa", Material.BROWN_DYE, lore, 1, amount);
+            }
         }
 
         if(superCrop == null) {

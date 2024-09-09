@@ -19,6 +19,7 @@ public class Manager {
     private static Manager manager;
     private static final Set<Material> seedItems = new HashSet<>();
     private static final Set<Material> cropBlocks = new HashSet<>();
+    private static final Set<Material> solidCropBlocks = new HashSet<>();
 
     public Manager() {
         manager = this;
@@ -34,6 +35,10 @@ public class Manager {
         cropBlocks.add(Material.NETHER_WART);
         cropBlocks.add(Material.POTATOES);
         cropBlocks.add(Material.WHEAT);
+
+        solidCropBlocks.add(Material.COCOA);
+        solidCropBlocks.add(Material.MELON);
+        solidCropBlocks.add(Material.PUMPKIN);
     }
     /*
      * Create a super crop item
@@ -140,6 +145,15 @@ public class Manager {
     }
 
     /*
+     * Checks if the item is a solid crop block
+     * @param cropBlockType - the type of crop block
+     * @returns boolean dictating if the item is a solid crop block
+     */
+    public boolean isSolidCropBlock(Material cropBlockType){
+        return solidCropBlocks.contains(cropBlockType);
+    }
+
+    /*
      * Converts a crop block to an item
      * @param cropBlockType - the type of the crop block
      * @returns the item of the crop block
@@ -151,6 +165,9 @@ public class Manager {
             case POTATOES -> Material.POTATO;
             case BEETROOTS -> Material.BEETROOT;
             case NETHER_WART -> Material.NETHER_WART;
+            case PUMPKIN -> Material.JACK_O_LANTERN;
+            case MELON -> Material.GLISTERING_MELON_SLICE;
+            case COCOA -> Material.BROWN_DYE;
             default -> Material.STONE;
         };
     }
@@ -167,6 +184,9 @@ public class Manager {
             case POTATOES -> "Opposite to the poisonous potato, and much rarer.";
             case BEETROOTS -> "A beetroot so old it's been infused with magic.";
             case NETHER_WART -> "Like a four leaf clover, found very rarely.";
+            case PUMPKIN -> "Possessed by a vengeful spirit who couldn't find anything scarier to haunt.";
+            case MELON -> "This rare fruit sparkles in a way that looks like little fairies.";
+            case COCOA -> "A flavour so delicious it'll kick your mouth in the ass.";
             default -> "Dm me if u got this item";
         };
     }
@@ -183,6 +203,9 @@ public class Manager {
             case POTATOES -> ChatColor.GREEN+"Medicinal Potato";
             case BEETROOTS -> ChatColor.LIGHT_PURPLE+"Mystic Beetroot";
             case NETHER_WART -> ChatColor.DARK_AQUA+"Warped Nether Wart";
+            case PUMPKIN -> ChatColor.GOLD+"Haunted Pumpkin";
+            case MELON -> ChatColor.GREEN+"Fairy Melon";
+            case COCOA -> ChatColor.RED+"Sweet Cocoa";
             default -> ChatColor.GRAY+"Error Crop";
         };
     }
@@ -199,6 +222,9 @@ public class Manager {
             case POTATOES -> ChatColor.GREEN+"You dug up a Medicinal Potato!";
             case BEETROOTS -> ChatColor.LIGHT_PURPLE+"You felt the aura of a Mystic Beetroot!";
             case NETHER_WART -> ChatColor.DARK_AQUA+"You uncovered a Warped Nether Wart!";
+            case PUMPKIN -> ChatColor.GOLD+"You were startled by a Haunted Pumpkin!";
+            case MELON -> ChatColor.GREEN+"You discovered a Fairy Melon!";
+            case COCOA -> ChatColor.RED+"You picked a bunch of Sweet Cocoa!";
             default -> ChatColor.GRAY+"Error Crop Message";
         };
     }

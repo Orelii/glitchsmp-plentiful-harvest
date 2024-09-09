@@ -3,7 +3,8 @@ package me.glasscrab.plentiful_harvest;
 import me.glasscrab.plentiful_harvest.Commands.GiveCropCommand;
 import me.glasscrab.plentiful_harvest.Listeners.*;
 import me.glasscrab.plentiful_harvest.Listeners.Brewing.WarpedNetherWartBrewEvent;
-import me.glasscrab.plentiful_harvest.Listeners.CropBreaks.*;
+import me.glasscrab.plentiful_harvest.Listeners.BlockHandling.*;
+import me.glasscrab.plentiful_harvest.Listeners.BlockHandling.PlaceRegularCrops;
 import me.glasscrab.plentiful_harvest.Listeners.OnConsumeEvents.DisableNonConsumableCropsEvent;
 import me.glasscrab.plentiful_harvest.Listeners.OnConsumeEvents.OnMysticBeetrootConsumeEvent;
 import me.glasscrab.plentiful_harvest.Listeners.OnConsumeEvents.OnWarpedPotionConsumeEvent;
@@ -33,6 +34,7 @@ public final class PlentifulHarvest extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new OnToggleHoeEvent(), this);
         this.getServer().getPluginManager().registerEvents(new DisableNonPlantableCropsEvent(manager), this);
         this.getServer().getPluginManager().registerEvents(new EditHoeOnJoinEvent(manager), this);
+        this.getServer().getPluginManager().registerEvents(new PlaceRegularCrops(manager, INSTANCE), this);
         this.getCommand("givecrop").setExecutor(new GiveCropCommand());
 
         CustomRecipes cr = new CustomRecipes(this);
