@@ -11,16 +11,21 @@ import me.glasscrab.plentiful_harvest.Listeners.OnConsumeEvents.OnWarpedPotionCo
 import me.glasscrab.plentiful_harvest.Listeners.OnConsumeEvents.OnWholeBreadConsumeEvent;
 import me.glasscrab.plentiful_harvest.Recipes.CompactCropRecipes;
 import me.glasscrab.plentiful_harvest.Recipes.CustomRecipes;
+import net.kyori.adventure.platform.bukkit.BukkitAudiences;
+
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class PlentifulHarvest extends JavaPlugin {
 
     public static PlentifulHarvest INSTANCE;
+    public BukkitAudiences audiences;
+
     @Override
     public void onEnable() {
         Manager manager = new Manager();
         INSTANCE = this;
+        this.audiences = BukkitAudiences.create(this);
         
         this.getServer().getPluginManager().registerEvents(new CropBreakEvent(manager), this);
         this.getServer().getPluginManager().registerEvents(new FarmlandTrampleEvent(), this);
@@ -64,5 +69,9 @@ public final class PlentifulHarvest extends JavaPlugin {
     @Override
     public void onDisable() {
         this.getLogger().info("Farming plugin has disabled!");
+        if (this.audiences != null){
+            this.audiences.close();
+            this.audiences = null;
+        }
     }
 }

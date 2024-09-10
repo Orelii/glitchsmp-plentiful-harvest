@@ -1,14 +1,16 @@
 package me.glasscrab.plentiful_harvest.Listeners.OnConsumeEvents;
 
-import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.TextComponent;
-import org.bukkit.ChatColor;
+import net.kyori.adventure.audience.Audience;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.Damageable;
+
+import me.glasscrab.plentiful_harvest.PlentifulHarvest;
 
 public class OnMysticBeetrootConsumeEvent implements Listener {
 
@@ -29,6 +31,9 @@ public class OnMysticBeetrootConsumeEvent implements Listener {
                 i.setItemMeta(damageable);
             }
         }
-        e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacy(ChatColor.LIGHT_PURPLE+"The beetroot's aura envelops your tools.."));
+        Audience audience = PlentifulHarvest.INSTANCE.audiences.player(e.getPlayer());
+        var miniMessage = MiniMessage.miniMessage();
+        Component parsedText = miniMessage.deserialize("<light_purple>The beetroot's aura envelops your tools..</light_purple>");
+        audience.sendActionBar(parsedText);
     }
 }

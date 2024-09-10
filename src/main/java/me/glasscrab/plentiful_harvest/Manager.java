@@ -1,7 +1,8 @@
 package me.glasscrab.plentiful_harvest;
 
-import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.TextComponent;
+import net.kyori.adventure.audience.Audience;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -93,7 +94,10 @@ public class Manager {
      * @returns void
      */
     public void fullInventoryAlert(Player player){
-        player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacy(ChatColor.RED+"YOUR INVENTORY IS FULL! YOU CANNOT COLLECT SUPER CROPS!"));
+        var miniMessage = MiniMessage.miniMessage();
+        Audience audience = PlentifulHarvest.INSTANCE.audiences.player(player);
+        Component parsedText = miniMessage.deserialize("<red>YOUR INVENTORY IS FULL! YOU CANNOT COLLECT SUPER CROPS!</red>");
+        audience.sendActionBar(parsedText);
         player.playSound(player, Sound.BLOCK_BELL_USE, 0.6f, 1);
     }
 
