@@ -32,10 +32,8 @@ public class CropBreakEvent implements Listener {
     public void onCropBreak(BlockDropItemEvent event) {
         if(event.getItems().isEmpty()) return; // If there are no items in inventory, return
         Player player = event.getPlayer();
-
         if(!manager.isCropBlock(event.getBlockState().getType()) && !manager.isSolidCropBlock(event.getBlockState().getType())) return; // If the block is not a crop block, return
         if(event.getBlockState() instanceof Container) return; // If the block is a container, return
-
         if (manager.isSolidCropBlock(event.getBlockState().getType())){
             if(!event.getPlayer().getWorld().getNearbyEntities(event.getBlock().getLocation(), 0.1, 0.1, 0.1).isEmpty()){
                 for (Entity entity : event.getPlayer().getWorld().getNearbyEntities(event.getBlock().getLocation(), 0.1, 0.1, 0.1)){

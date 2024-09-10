@@ -17,7 +17,8 @@ public class DisableNonConsumableCropsEvent implements Listener {
         }
 
         if(e.getItem().getType().equals(Material.POTATO) ||
-           e.getItem().getType().equals(Material.CARROT)){
+           e.getItem().getType().equals(Material.CARROT) ||
+           e.getItem().getType().equals(Material.JACK_O_LANTERN)){
             if(e.getItem().getItemMeta().getCustomModelData() != 1) return;
             e.setCancelled(true);
         }
