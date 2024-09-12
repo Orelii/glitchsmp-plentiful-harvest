@@ -25,6 +25,7 @@ public class PushSolidCropBlockEvent implements Listener {
             case WEST -> { block = e.getBlock().getLocation().add(-1, 0, 0).getBlock(); }
             case NORTH -> { block = e.getBlock().getLocation().add(0, 0, -1).getBlock(); }
             case SOUTH -> { block = e.getBlock().getLocation().add(0, 0, 1).getBlock(); }
+            default -> block = e.getBlock();
         }
         if (!manager.isSolidCropBlock(block.getType())) return;
         if(!e.getBlock().getWorld().getNearbyEntities(block.getLocation(), 0.1, 0.1, 0.1).isEmpty()){
