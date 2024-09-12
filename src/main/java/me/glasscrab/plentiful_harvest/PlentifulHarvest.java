@@ -8,6 +8,7 @@ import me.glasscrab.plentiful_harvest.Listeners.OnConsumeEvents.DisableNonConsum
 import me.glasscrab.plentiful_harvest.Listeners.OnConsumeEvents.OnMysticBeetrootConsumeEvent;
 import me.glasscrab.plentiful_harvest.Listeners.OnConsumeEvents.OnWarpedPotionConsumeEvent;
 import me.glasscrab.plentiful_harvest.Listeners.OnConsumeEvents.OnWholeBreadConsumeEvent;
+import me.glasscrab.plentiful_harvest.Listeners.OnConsumeEvents.OnXocolatlConsumeEvent;
 import me.glasscrab.plentiful_harvest.Recipes.CompactCropRecipes;
 import me.glasscrab.plentiful_harvest.Recipes.CustomRecipes;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
@@ -46,6 +47,8 @@ public final class PlentifulHarvest extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new RemoveMarkerFromSolidCropsEvent(), this);
         this.getServer().getPluginManager().registerEvents(new PushSolidCropBlockEvent(manager), this);
         this.getServer().getPluginManager().registerEvents(new RemoveMarkerOnExplosion(manager), this);
+        this.getServer().getPluginManager().registerEvents(new XocolatlBreakEvent(manager), this);
+        this.getServer().getPluginManager().registerEvents(new OnXocolatlConsumeEvent(), this);
         this.getCommand("givecrop").setExecutor(new GiveCropCommand());
 
         CustomRecipes cr = new CustomRecipes(this);
@@ -53,6 +56,7 @@ public final class PlentifulHarvest extends JavaPlugin {
         Bukkit.addRecipe(cr.farmersHoeShapedRecipe());
         Bukkit.addRecipe(cr.wholeFlourStoneCuttingRecipe());
         Bukkit.addRecipe(cr.wholeBreadSmokingRecipe());
+        Bukkit.addRecipe(cr.xocolatlRecipe());
         CompactCropRecipes ccr = new CompactCropRecipes(this);
         Bukkit.addRecipe(ccr.compactWheatSeedsShapedRecipe());
         Bukkit.addRecipe(ccr.uncompactWheatSeedsShapelessRecipe());

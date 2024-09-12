@@ -1,5 +1,6 @@
 package me.glasscrab.plentiful_harvest.Recipes;
 
+import me.glasscrab.plentiful_harvest.Manager;
 import me.glasscrab.plentiful_harvest.PlentifulHarvest;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
@@ -7,9 +8,10 @@ import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
+import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.plugin.Plugin;
 
-import java.util.List;
+import java.util.*;
 
 public class CustomRecipes {
     private final Plugin plugin;
@@ -117,5 +119,26 @@ public class CustomRecipes {
         NamespacedKey wholeBreadKey = new NamespacedKey(plugin, "whole_bread");
         SmokingRecipe wholeBreadRecipe = new SmokingRecipe(wholeBreadKey, wholeBread, new RecipeChoice.ExactChoice(wholeFlour), 10f, 400);
         return wholeBreadRecipe;
+    }
+
+    public FurnaceRecipe xocolatlRecipe(){
+        List<String> lore = new ArrayList<>();
+        lore.add(ChatColor.GRAY + "A flavour so delicious it'll kick your mouth in the ass.");
+        ItemStack sweetCocoa = Manager.getManager().makeSuperCrop(ChatColor.RED + "Sweet Cocoa", Material.BROWN_DYE, lore, 1, 1);
+        
+
+        ItemStack xocolatl = new ItemStack(Material.POTION);
+        PotionMeta xocolatlMeta = (PotionMeta) xocolatl.getItemMeta();
+        xocolatlMeta.setColor(Color.fromRGB(71,31,19));
+        xocolatlMeta.setItemName("Xocolatl");
+        xocolatlMeta.setLore(List.of(ChatColor.RESET+""+ChatColor.GRAY+"The food of the gods."));
+        xocolatlMeta.setCustomModelData(2);
+        xocolatlMeta.setMaxStackSize(4);
+        xocolatlMeta.addItemFlags(ItemFlag.HIDE_ADDITIONAL_TOOLTIP);
+        xocolatl.setItemMeta(xocolatlMeta);
+
+        NamespacedKey xocolatlKey = new NamespacedKey(plugin, "xocolatl");
+        FurnaceRecipe xocolatlRecipe = new FurnaceRecipe(xocolatlKey, xocolatl, new RecipeChoice.ExactChoice(sweetCocoa), 10f, 500);
+        return xocolatlRecipe;
     }
 }

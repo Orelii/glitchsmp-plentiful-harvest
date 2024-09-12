@@ -22,6 +22,7 @@ public class Manager {
     private static final Set<Material> seedItems = new HashSet<>();
     private static final Set<Material> cropBlocks = new HashSet<>();
     private static final Set<Material> solidCropBlocks = new HashSet<>();
+    private static final Map<Material, Double> cocoaBlockValues = new HashMap<Material, Double>();
 
     public Manager() {
         manager = this;
@@ -41,6 +42,58 @@ public class Manager {
         solidCropBlocks.add(Material.COCOA);
         solidCropBlocks.add(Material.MELON);
         solidCropBlocks.add(Material.PUMPKIN);
+
+        cocoaBlockValues.put(Material.DIAMOND_ORE, 0.07);
+        cocoaBlockValues.put(Material.EMERALD_ORE, 0.09);
+        cocoaBlockValues.put(Material.IRON_ORE, 0.02);
+        cocoaBlockValues.put(Material.GOLD_ORE, 0.03);
+        cocoaBlockValues.put(Material.LAPIS_ORE, 0.0235);
+        cocoaBlockValues.put(Material.COPPER_ORE, 0.02);
+        cocoaBlockValues.put(Material.COAL_ORE, 0.01);
+        cocoaBlockValues.put(Material.REDSTONE_ORE, 0.03);
+        cocoaBlockValues.put(Material.DEEPSLATE_DIAMOND_ORE, 0.07);
+        cocoaBlockValues.put(Material.DEEPSLATE_EMERALD_ORE, 0.09);
+        cocoaBlockValues.put(Material.DEEPSLATE_IRON_ORE, 0.02);
+        cocoaBlockValues.put(Material.DEEPSLATE_GOLD_ORE, 0.03);
+        cocoaBlockValues.put(Material.DEEPSLATE_LAPIS_ORE, 0.0235);
+        cocoaBlockValues.put(Material.DEEPSLATE_COPPER_ORE, 0.02);
+        cocoaBlockValues.put(Material.DEEPSLATE_COAL_ORE, 0.01);
+        cocoaBlockValues.put(Material.DEEPSLATE_REDSTONE_ORE, 0.03);
+        cocoaBlockValues.put(Material.DIRT, 0.001);
+        cocoaBlockValues.put(Material.SAND, 0.001);
+        cocoaBlockValues.put(Material.GRAVEL, 0.001);
+        cocoaBlockValues.put(Material.RED_SAND, 0.001);
+        cocoaBlockValues.put(Material.MUD, 0.001);
+        cocoaBlockValues.put(Material.MOSS_BLOCK, 0.001);
+        cocoaBlockValues.put(Material.STONE, 0.003);
+        cocoaBlockValues.put(Material.DEEPSLATE, 0.003);
+        cocoaBlockValues.put(Material.NETHERRACK, 0.0005);
+        cocoaBlockValues.put(Material.BLACKSTONE, 0.003);
+        cocoaBlockValues.put(Material.BASALT, 0.003);
+        cocoaBlockValues.put(Material.GRANITE, 0.003);
+        cocoaBlockValues.put(Material.ANDESITE, 0.003);
+        cocoaBlockValues.put(Material.DIORITE, 0.003);
+        cocoaBlockValues.put(Material.TUFF, 0.003);
+        cocoaBlockValues.put(Material.CALCITE, 0.003);
+        cocoaBlockValues.put(Material.END_STONE, 0.004);
+        cocoaBlockValues.put(Material.OAK_LOG, 0.005);
+        cocoaBlockValues.put(Material.BIRCH_LOG, 0.005);
+        cocoaBlockValues.put(Material.SPRUCE_LOG, 0.005);
+        cocoaBlockValues.put(Material.JUNGLE_LOG, 0.005);
+        cocoaBlockValues.put(Material.ACACIA_LOG, 0.005);
+        cocoaBlockValues.put(Material.DARK_OAK_LOG, 0.005);
+        cocoaBlockValues.put(Material.WARPED_STEM, 0.0055);
+        cocoaBlockValues.put(Material.CRIMSON_STEM, 0.0055);
+        cocoaBlockValues.put(Material.MANGROVE_LOG, 0.005);
+        cocoaBlockValues.put(Material.CHERRY_LOG, 0.005);
+        cocoaBlockValues.put(Material.WHEAT, 0.0065);
+        cocoaBlockValues.put(Material.POTATOES, 0.0065);
+        cocoaBlockValues.put(Material.BEETROOTS, 0.0065);
+        cocoaBlockValues.put(Material.NETHER_WART, 0.0065);
+        cocoaBlockValues.put(Material.CARROTS, 0.0065);
+        cocoaBlockValues.put(Material.PUMPKIN, 0.0065);
+        cocoaBlockValues.put(Material.COCOA, 0.0065);
+        cocoaBlockValues.put(Material.MELON, 0.0065);
     }
     /*
      * Create a super crop item
@@ -304,6 +357,25 @@ public class Manager {
                 block.setBlockData(age);
             }
         }.runTaskLater(PlentifulHarvest.INSTANCE, 1);
+    }
+
+    /*
+     * Checks if a given block has a monetary value associated with it
+     * @param block - a block material
+     * @returns true if the block has a value, false otherwise
+     */
+    public boolean isBlockWorthChocolate(Material block){
+        return cocoaBlockValues.containsKey(block);
+    }
+
+    /*
+     * Gets the monetary value of block
+     * @param block - a block material
+     * @returns the block's associated value if it has one, 0 otherwise
+     */
+    public double getBlockChocolateValue(Material block){
+        if (cocoaBlockValues.containsKey(block)) return cocoaBlockValues.get(block);
+        return 0;
     }
 
     /*
