@@ -13,6 +13,9 @@ import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.components.FoodComponent;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.*;
@@ -43,57 +46,59 @@ public class Manager {
         solidCropBlocks.add(Material.MELON);
         solidCropBlocks.add(Material.PUMPKIN);
 
-        cocoaBlockValues.put(Material.DIAMOND_ORE, 7.);
-        cocoaBlockValues.put(Material.EMERALD_ORE, 9.);
-        cocoaBlockValues.put(Material.IRON_ORE, 2.);
-        cocoaBlockValues.put(Material.GOLD_ORE, 3.);
-        cocoaBlockValues.put(Material.LAPIS_ORE, 2.35);
-        cocoaBlockValues.put(Material.COPPER_ORE, 2.);
-        cocoaBlockValues.put(Material.COAL_ORE, 1.);
-        cocoaBlockValues.put(Material.REDSTONE_ORE, 3.);
-        cocoaBlockValues.put(Material.DEEPSLATE_DIAMOND_ORE, 7.);
-        cocoaBlockValues.put(Material.DEEPSLATE_EMERALD_ORE, 9.);
-        cocoaBlockValues.put(Material.DEEPSLATE_IRON_ORE, 2.);
-        cocoaBlockValues.put(Material.DEEPSLATE_GOLD_ORE, 3.);
-        cocoaBlockValues.put(Material.DEEPSLATE_LAPIS_ORE, 2.35);
-        cocoaBlockValues.put(Material.DEEPSLATE_COPPER_ORE, 2.);
-        cocoaBlockValues.put(Material.DEEPSLATE_COAL_ORE, 1.);
-        cocoaBlockValues.put(Material.DEEPSLATE_REDSTONE_ORE, 3.);
-        cocoaBlockValues.put(Material.DIRT, 0.1);
-        cocoaBlockValues.put(Material.SAND, 0.1);
-        cocoaBlockValues.put(Material.GRAVEL, 0.1);
-        cocoaBlockValues.put(Material.RED_SAND, 0.1);
-        cocoaBlockValues.put(Material.MUD, 0.1);
-        cocoaBlockValues.put(Material.MOSS_BLOCK, 0.1);
-        cocoaBlockValues.put(Material.STONE, 0.3);
-        cocoaBlockValues.put(Material.DEEPSLATE, 0.1);
-        cocoaBlockValues.put(Material.NETHERRACK, 0.1);
-        cocoaBlockValues.put(Material.BLACKSTONE, 0.3);
-        cocoaBlockValues.put(Material.BASALT, 0.3);
-        cocoaBlockValues.put(Material.GRANITE, 0.3);
-        cocoaBlockValues.put(Material.ANDESITE, 0.3);
-        cocoaBlockValues.put(Material.DIORITE, 0.3);
-        cocoaBlockValues.put(Material.TUFF, 0.3);
-        cocoaBlockValues.put(Material.CALCITE, 0.3);
-        cocoaBlockValues.put(Material.END_STONE, 0.4);
-        cocoaBlockValues.put(Material.OAK_LOG, 0.5);
-        cocoaBlockValues.put(Material.BIRCH_LOG, 0.5);
-        cocoaBlockValues.put(Material.SPRUCE_LOG, 0.5);
-        cocoaBlockValues.put(Material.JUNGLE_LOG, 0.5);
-        cocoaBlockValues.put(Material.ACACIA_LOG, 0.5);
-        cocoaBlockValues.put(Material.DARK_OAK_LOG, 0.5);
-        cocoaBlockValues.put(Material.WARPED_STEM, 0.55);
-        cocoaBlockValues.put(Material.CRIMSON_STEM, 0.55);
-        cocoaBlockValues.put(Material.MANGROVE_LOG, 0.5);
-        cocoaBlockValues.put(Material.CHERRY_LOG, 0.5);
-        cocoaBlockValues.put(Material.WHEAT, 0.65);
-        cocoaBlockValues.put(Material.POTATOES, 0.65);
-        cocoaBlockValues.put(Material.BEETROOTS, 0.65);
-        cocoaBlockValues.put(Material.NETHER_WART, 0.65);
-        cocoaBlockValues.put(Material.CARROTS, 0.65);
-        cocoaBlockValues.put(Material.PUMPKIN, 0.65);
-        cocoaBlockValues.put(Material.COCOA, 0.65);
-        cocoaBlockValues.put(Material.MELON, 0.65);
+        cocoaBlockValues.put(Material.DIAMOND_ORE, 14.);
+        cocoaBlockValues.put(Material.EMERALD_ORE, 18.);
+        cocoaBlockValues.put(Material.IRON_ORE, 4.);
+        cocoaBlockValues.put(Material.GOLD_ORE, 6.);
+        cocoaBlockValues.put(Material.LAPIS_ORE, 4.7);
+        cocoaBlockValues.put(Material.COPPER_ORE, 4.);
+        cocoaBlockValues.put(Material.COAL_ORE, 2.);
+        cocoaBlockValues.put(Material.REDSTONE_ORE, 6.);
+        cocoaBlockValues.put(Material.DEEPSLATE_DIAMOND_ORE, 14.);
+        cocoaBlockValues.put(Material.DEEPSLATE_EMERALD_ORE, 18.);
+        cocoaBlockValues.put(Material.DEEPSLATE_IRON_ORE, 4.);
+        cocoaBlockValues.put(Material.DEEPSLATE_GOLD_ORE, 6.);
+        cocoaBlockValues.put(Material.DEEPSLATE_LAPIS_ORE, 4.7);
+        cocoaBlockValues.put(Material.DEEPSLATE_COPPER_ORE, 4.);
+        cocoaBlockValues.put(Material.DEEPSLATE_COAL_ORE, 2.);
+        cocoaBlockValues.put(Material.DEEPSLATE_REDSTONE_ORE, 6.);
+        cocoaBlockValues.put(Material.ANCIENT_DEBRIS, 50.);
+        cocoaBlockValues.put(Material.GRASS_BLOCK, 0.2);
+        cocoaBlockValues.put(Material.DIRT, 0.2);
+        cocoaBlockValues.put(Material.SAND, 0.2);
+        cocoaBlockValues.put(Material.GRAVEL, 0.2);
+        cocoaBlockValues.put(Material.RED_SAND, 0.2);
+        cocoaBlockValues.put(Material.MUD, 0.2);
+        cocoaBlockValues.put(Material.MOSS_BLOCK, 0.2);
+        cocoaBlockValues.put(Material.STONE, 0.6);
+        cocoaBlockValues.put(Material.DEEPSLATE, 0.2);
+        cocoaBlockValues.put(Material.NETHERRACK, 0.2);
+        cocoaBlockValues.put(Material.BLACKSTONE, 0.6);
+        cocoaBlockValues.put(Material.BASALT, 0.6);
+        cocoaBlockValues.put(Material.GRANITE, 0.6);
+        cocoaBlockValues.put(Material.ANDESITE, 0.6);
+        cocoaBlockValues.put(Material.DIORITE, 0.6);
+        cocoaBlockValues.put(Material.TUFF, 0.6);
+        cocoaBlockValues.put(Material.CALCITE, 0.6);
+        cocoaBlockValues.put(Material.END_STONE, 0.8);
+        cocoaBlockValues.put(Material.OAK_LOG, 1.);
+        cocoaBlockValues.put(Material.BIRCH_LOG, 1.);
+        cocoaBlockValues.put(Material.SPRUCE_LOG, 1.);
+        cocoaBlockValues.put(Material.JUNGLE_LOG, 1.);
+        cocoaBlockValues.put(Material.ACACIA_LOG, 1.);
+        cocoaBlockValues.put(Material.DARK_OAK_LOG, 1.);
+        cocoaBlockValues.put(Material.WARPED_STEM, 1.1);
+        cocoaBlockValues.put(Material.CRIMSON_STEM, 1.1);
+        cocoaBlockValues.put(Material.MANGROVE_LOG, 1.);
+        cocoaBlockValues.put(Material.CHERRY_LOG, 1.);
+        cocoaBlockValues.put(Material.WHEAT, 1.3);
+        cocoaBlockValues.put(Material.POTATOES, 1.3);
+        cocoaBlockValues.put(Material.BEETROOTS, 1.3);
+        cocoaBlockValues.put(Material.NETHER_WART, 1.3);
+        cocoaBlockValues.put(Material.CARROTS, 1.3);
+        cocoaBlockValues.put(Material.PUMPKIN, 1.3);
+        cocoaBlockValues.put(Material.COCOA, 1.3);
+        cocoaBlockValues.put(Material.MELON, 1.3);
     }
     /*
      * Create a super crop item
@@ -110,6 +115,14 @@ public class Manager {
 
         if(superCropItemMeta == null) {
             return null;
+        }
+        else if (material == Material.GLISTERING_MELON_SLICE){
+            FoodComponent melonFoodComponent = superCropItemMeta.getFood();
+            melonFoodComponent.setCanAlwaysEat(true);
+            melonFoodComponent.setEatSeconds(0.6f);
+            melonFoodComponent.addEffect(new PotionEffect(PotionEffectType.LUCK, 20, 0, true), 1f);
+
+            superCropItemMeta.setFood(melonFoodComponent);
         }
 
         superCropItemMeta.setDisplayName(name);

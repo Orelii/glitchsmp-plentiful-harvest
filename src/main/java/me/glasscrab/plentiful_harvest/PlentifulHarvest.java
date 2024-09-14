@@ -5,6 +5,7 @@ import me.glasscrab.plentiful_harvest.Listeners.*;
 import me.glasscrab.plentiful_harvest.Listeners.Brewing.WarpedNetherWartBrewEvent;
 import me.glasscrab.plentiful_harvest.Listeners.BlockHandling.*;
 import me.glasscrab.plentiful_harvest.Listeners.OnConsumeEvents.DisableNonConsumableCropsEvent;
+import me.glasscrab.plentiful_harvest.Listeners.OnConsumeEvents.OnFairyMelonConsumeEvent;
 import me.glasscrab.plentiful_harvest.Listeners.OnConsumeEvents.OnMysticBeetrootConsumeEvent;
 import me.glasscrab.plentiful_harvest.Listeners.OnConsumeEvents.OnWarpedPotionConsumeEvent;
 import me.glasscrab.plentiful_harvest.Listeners.OnConsumeEvents.OnWholeBreadConsumeEvent;
@@ -45,6 +46,7 @@ public final class PlentifulHarvest extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(new RemoveMarkerOnExplosion(manager), this);
         this.getServer().getPluginManager().registerEvents(new XocolatlBreakEvent(manager), this);
         this.getServer().getPluginManager().registerEvents(new OnXocolatlConsumeEvent(), this);
+        this.getServer().getPluginManager().registerEvents(new OnFairyMelonConsumeEvent(), this);
         this.getCommand("givecrop").setExecutor(new GiveCropCommand());
 
         CustomRecipes cr = new CustomRecipes(this);
