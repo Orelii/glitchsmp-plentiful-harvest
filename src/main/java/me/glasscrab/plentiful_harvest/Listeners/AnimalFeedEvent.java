@@ -6,12 +6,15 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.AbstractHorse;
+import org.bukkit.entity.AbstractVillager;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.MerchantRecipe;
+import org.bukkit.persistence.PersistentDataContainer;
 
 import me.glasscrab.plentiful_harvest.PlentifulHarvest;
 
@@ -54,7 +57,16 @@ public class AnimalFeedEvent implements Listener {
                 hand.setAmount(hand.getAmount()-1);
             }
 
-
+            if (hand.getType().equals(Material.BROWN_DYE) && e.getRightClicked() instanceof AbstractVillager){
+                for (MerchantRecipe recipe : ((AbstractVillager) e.getRightClicked()).getRecipes()){
+                    recipe.setUses(0);
+                    recipe.setDemand(0);
+                }
+                e.getPlayer().getWorld().spawnParticle(Particle.SCRAPE, ((LivingEntity) e.getRightClicked()).getEyeLocation(),15,.8,.8,.8,.2);
+                e.getPlayer().playSound(e.getPlayer(), Sound.ENTITY_VILLAGER_CELEBRATE, 1, 1);
+ 
+                hand.setAmount(hand.getAmount() - 1);
+            }
 
         }
     }
