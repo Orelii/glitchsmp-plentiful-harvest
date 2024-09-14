@@ -2,10 +2,12 @@ package me.glasscrab.plentiful_harvest.Listeners.OnConsumeEvents;
 
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
 
@@ -34,8 +36,12 @@ public class OnXocolatlConsumeEvent implements Listener {
             e.setCancelled(true);
         }
         else{
-            e.getPlayer().setMetadata("xocolatlBlocks", new FixedMetadataValue(PlentifulHarvest.INSTANCE, 400));
+            e.getItem().setAmount(e.getItem().getAmount() - 1);
+            e.getPlayer().setMetadata("xocolatlBlocks", new FixedMetadataValue(PlentifulHarvest.INSTANCE, 675));
             audience.sendActionBar(miniMessage.deserialize("<green>You suddenly feel prosperous...!</green>"));
+            ItemStack bottle = e.getItem();
+            bottle.setAmount(bottle.getAmount() - 1);
+            e.getPlayer().getInventory().setItem(e.getHand(), bottle);
         }
     }
 
