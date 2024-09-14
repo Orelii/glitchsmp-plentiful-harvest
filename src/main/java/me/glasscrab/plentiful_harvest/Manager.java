@@ -120,7 +120,7 @@ public class Manager {
             FoodComponent melonFoodComponent = superCropItemMeta.getFood();
             melonFoodComponent.setCanAlwaysEat(true);
             melonFoodComponent.setEatSeconds(0.6f);
-            melonFoodComponent.addEffect(new PotionEffect(PotionEffectType.LUCK, 20, 0, true), 1f);
+            melonFoodComponent.addEffect(new PotionEffect(PotionEffectType.LUCK, 400, 0), 1f);
 
             superCropItemMeta.setFood(melonFoodComponent);
         }

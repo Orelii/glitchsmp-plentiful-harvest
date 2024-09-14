@@ -9,7 +9,6 @@ import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.PotionMeta;
-import org.bukkit.inventory.meta.components.FoodComponent;
 import org.bukkit.plugin.Plugin;
 
 import java.util.*;
