@@ -1,6 +1,7 @@
 package me.glasscrab.plentiful_harvest.Listeners.OnConsumeEvents;
 
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
@@ -24,6 +25,7 @@ public class OnFairyMelonConsumeEvent implements Listener {
 
         Audience audience = PlentifulHarvest.INSTANCE.audiences.player(e.getPlayer());
         var miniMessage = MiniMessage.miniMessage();
+        e.getPlayer().playSound(e.getPlayer(), Sound.ITEM_TRIDENT_RIPTIDE_3, 1, 2);
         audience.sendActionBar(miniMessage.deserialize("<green>It feels like a weight has been lifted off your shoulders...</green>"));    
     }
 }

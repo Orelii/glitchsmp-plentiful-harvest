@@ -4,6 +4,7 @@ import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
@@ -42,6 +43,7 @@ public class OnXocolatlConsumeEvent implements Listener {
             ItemStack bottle = e.getItem();
             bottle.setAmount(bottle.getAmount() - 1);
             e.getPlayer().getInventory().setItem(e.getHand(), bottle);
+            e.getPlayer().playSound(e.getPlayer(), Sound.ITEM_HONEY_BOTTLE_DRINK, 1, 1);
         }
     }
 
