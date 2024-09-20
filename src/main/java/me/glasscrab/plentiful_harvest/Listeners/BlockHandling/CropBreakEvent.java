@@ -3,6 +3,7 @@ package me.glasscrab.plentiful_harvest.Listeners.BlockHandling;
 import me.glasscrab.plentiful_harvest.Manager;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.block.Container;
 import org.bukkit.block.data.Ageable;
 import org.bukkit.entity.Item;
@@ -34,7 +35,7 @@ public class CropBreakEvent implements Listener {
         Player player = event.getPlayer();
         if(!manager.isCropBlock(event.getBlockState().getType()) && !manager.isSolidCropBlock(event.getBlockState().getType())) return; // If the block is not a crop block, return
         if(event.getBlockState() instanceof Container) return; // If the block is a container, return
-        if (manager.isSolidCropBlock(event.getBlockState().getType())){
+        if (manager.isSolidCropBlock(event.getBlockState().getType()) && event.getBlockState().getType() != Material.COCOA){
             if(!event.getPlayer().getWorld().getNearbyEntities(event.getBlock().getLocation(), 0.1, 0.1, 0.1).isEmpty()){
                 for (Entity entity : event.getPlayer().getWorld().getNearbyEntities(event.getBlock().getLocation(), 0.1, 0.1, 0.1)){
                     if (!entity.hasMetadata("playerplaced")) return;

@@ -8,6 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.entity.EntityType;
+import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 
 public class PlaceRegularCrops implements Listener {
@@ -22,6 +23,7 @@ public class PlaceRegularCrops implements Listener {
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent e){
         if (manager.isSolidCropBlock(e.getBlockPlaced().getType())){
+            if (e.getBlockPlaced().getType() == Material.COCOA) return;
             Entity blockmarker = e.getPlayer().getWorld().spawnEntity(e.getBlockPlaced().getLocation(), EntityType.MARKER);
             blockmarker.setMetadata("playerplaced", new FixedMetadataValue(mainClass, true));
         }
